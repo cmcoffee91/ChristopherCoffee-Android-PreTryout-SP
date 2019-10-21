@@ -28,27 +28,53 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.rwandroidtutorial
+package com.raywenderlich.android.tipmaster
 
-import androidx.test.InstrumentationRegistry
-import androidx.test.runner.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Main Screen
  */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
-  @Test
-  fun useAppContext() {
-    // Context of the app under test.
-    val appContext = InstrumentationRegistry.getTargetContext()
-    assertEquals("com.raywenderlich.android.rwandroidtutorial", appContext.packageName)
+class MainActivity : AppCompatActivity() {
+
+
+
+  private var tipPercentage = 20.0
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    // Switch to AppTheme for displaying the activity
+    setTheme(R.style.AppTheme)
+
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+
+    // Your code
+
+    tipAmount.text = getString(R.string.tip, 0.0)
+
+
+    calculateButton.setOnClickListener {   //1
+
+      val billTotal = billEditText.text.toString().toDouble()   //2
+
+      val totalTipAmount = (billTotal * tipPercentage) / 100.0   //3
+
+      tipAmount.text = getString(R.string.tip, totalTipAmount)   //4
+
+    }
+
+
+
+
+
   }
+
+
+
+
+
 }

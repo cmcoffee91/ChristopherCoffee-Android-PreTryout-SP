@@ -28,23 +28,27 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.rwandroidtutorial
+package com.raywenderlich.android.tipmaster
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
+
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import org.junit.Assert.*
 
 /**
- * Main Screen
+ * Instrumented test, which will execute on an Android device.
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
  */
-class MainActivity : AppCompatActivity() {
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    // Switch to AppTheme for displaying the activity
-    setTheme(R.style.AppTheme)
-
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-
-    // Your code
+@RunWith(AndroidJUnit4::class)
+class ExampleInstrumentedTest {
+  @Test
+  fun useAppContext() {
+    // Context of the app under test.
+    val appContext = InstrumentationRegistry.getTargetContext()
+    assertEquals("com.raywenderlich.android.rwandroidtutorial", appContext.packageName)
   }
 }
